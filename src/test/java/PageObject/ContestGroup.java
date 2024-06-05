@@ -7,12 +7,12 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ContestGroup {
 	
-public WebDriver ldriver;
-
-ContestGroup(WebDriver rdriver){
-	ldriver=rdriver;
-	PageFactory.initElements(rdriver,this);
-}
+	public WebDriver ldriver;
+	
+	public ContestGroup(WebDriver rdriver){
+		ldriver=rdriver;
+		PageFactory.initElements(rdriver,this);
+	}
 
 //click on dfs
 @FindBy(xpath = "//span[.='DFS']")
@@ -23,6 +23,10 @@ WebElement clickOnContestgroup;
 
 @FindBy(xpath = "//a[.=' Add Contest Group']")
 WebElement clickonaddcg;
+
+public void ClickOnDFS() {
+	clickDFS.click();
+}
 
 
 

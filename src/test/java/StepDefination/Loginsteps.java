@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import PageObject.Contest;
+import PageObject.ContestGroup;
 import PageObject.Loginpage;
 import PageObject.MarketingCategory;
 import PageObject.video;
@@ -159,6 +161,8 @@ public class Loginsteps extends BaseClass {
 //Contest Group 
 	@When("click on the DFS")
 	public void click_on_the_dfs() {
+	cg=new ContestGroup(driver);
+	cg.ClickOnDFS();
 	 
 	}
 	@When("click on the Contest Group")
@@ -177,6 +181,37 @@ public class Loginsteps extends BaseClass {
 	public void user_enter_contest_group_details() {
 	
 	}
+	//Contest page 
+	@When("click on the Contest")
+	public void click_on_the_contest() throws InterruptedException {
+	  c=new  Contest(driver);
+	  Thread.sleep(2000);
+	  
+	//  org.openqa.selenium.ElementNotInteractableException  : When get this error use thread .sleep 
+	  c.clickOnContest();
+	}
+	@When("Click on the Add contest")
+	public void click_on_the_add_contest() {
+		c.clickOnAddContest();
+		
+	   
+	}
+	@Then("user can view add contest page")
+	public void user_can_view_add_contest_page() {
+	    
+	}
+	@When("user Enter Contest  details")
+	public void user_enter_contest_details() {
+	  
+	}
+	@When("click on the sumbit button")
+	public void click_on_the_sumbit_button() {
+	   
+	}
+	//@Then("user can view Confirmation message {string}")
+//	public void user_can_view_confirmation_message(String string) {
+//	    
+//	}
 	
 
 
