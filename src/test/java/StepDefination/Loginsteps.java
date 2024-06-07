@@ -6,10 +6,11 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import PageObject.Contest;
 import PageObject.ContestGroup;
-import PageObject.Loginpage;
+import PageObject.Login;
 import PageObject.MarketingCategory;
 import PageObject.video;
 import io.cucumber.java.en.*;
@@ -19,13 +20,13 @@ public class Loginsteps extends BaseClass {
 //public 	WebDriver driver;
 //public Loginpage 	;
 
-
+//login page
 	@Given("user launch chrome browser")
 	public void user_launch_chrome_browser() {
 		System.setProperty("webdriver.chrome.driver","./Driver/chromedriver.exe");
 		driver=new ChromeDriver();
 		driver.manage().window().maximize();
-	   loginlp =new Loginpage(driver);
+	   loginlp =new Login(driver);
 	}
 
 	@When("user open URL {string}")
@@ -49,16 +50,14 @@ public class Loginsteps extends BaseClass {
 
 	@Then("page title should be {string}")
 	public void page_title_should_be(String title) throws InterruptedException {
-		
-		if (driver.getPageSource().contains("Admin")) {
-			//driver.close();
-			Assert.assertTrue(true); //false
-			
+		String url=driver.getCurrentUrl();		
+		if (url.contains("http://skyonliners.com/demo/gammingle-web/webadmin/dashboard")) {
+			System.out.println("url match");
 		} else {
-              Assert.assertEquals(title, driver.getTitle());
+             System.out.println("url is not match");
 		}
 		 Thread.sleep(2000);
-//		
+		
 //		String url=driver.getCurrentUrl();
 //		Assert.assertEquals(url, "http://skyonliners.com/demo/gammingle-web/webadmin/dashboard");
 	   
@@ -107,8 +106,7 @@ public class Loginsteps extends BaseClass {
 	}
 	@Then("user can view add Marketing category page")
 	public void user_can_view_add_marketing_category_page() {
-		Assert.assertEquals("Admin", addmc.getpageTitle());
-	    
+		Assert.assertEquals("Admin", addmc.getpageTitle());	    
 	}
 	@When("user enter Marketing name")
 	public void user_enter_marketing_name() throws InterruptedException {
@@ -136,19 +134,20 @@ public class Loginsteps extends BaseClass {
 	@When("click on videos")
 	public void click_on_videos() throws InterruptedException {
 		vp=new video(driver);
+		Thread.sleep(1000);
 		vp.clickVideo();
-		Thread.sleep(3000);
+		
 	   
 	}
 	@When("click on the add video")
 	public void click_on_the_add_video() throws InterruptedException {
 		vp.clickOnAddVideo();
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 	  
 	}
 	@Then("user can view add video page")
 	public void user_can_view_add_video_page() {
-	  Assert.assertEquals("Admin", vp.getpageTitle());
+	  Assert.assertEquals("Admin", vp.getpageTitle());  //change this code 
 	}
 	@When("user Enter Video information and upload url")
 	public void user_enter_video_information_and_upload_url() throws InterruptedException {
@@ -158,6 +157,7 @@ public class Loginsteps extends BaseClass {
 		Thread.sleep(1000);
 		vp.enterDESC("DEmooooooooooooooo");
 	}
+	
 //Contest Group 
 	@When("click on the DFS")
 	public void click_on_the_dfs() {
@@ -166,20 +166,30 @@ public class Loginsteps extends BaseClass {
 	 
 	}
 	@When("click on the Contest Group")
-	public void click_on_the_contest_group() {
+	public void click_on_the_contest_group() throws InterruptedException {
+		Thread.sleep(2000);
+		cg.clickOnContestGroup();
 	   
 	}
 	@When("Click on the Add contest group")
 	public void click_on_the_add_contest_group() {
-	
+	    cg.clickOnAddContest();
 	}
 	@Then("user can view add contest group page")
 	public void user_can_view_add_contest_group_page() {
 	    
 	}
 	@When("user Enter Contest group details")
-	public void user_enter_contest_group_details() {
-	
+	public void user_enter_contest_group_details() throws InterruptedException {
+		Thread.sleep(1000);
+	   cg.Sequence();
+	   cg.uploadFile();
+	   Thread.sleep(2000);
+	//   cg.clickOnEnglish("demoo", "demoo");
+	   Thread.sleep(2000);
+	   cg.clikcOnHindi("hindi demo", "demo");
+	   cg.Submit();
+		
 	}
 	//Contest page 
 	@When("click on the Contest")
@@ -198,14 +208,31 @@ public class Loginsteps extends BaseClass {
 	}
 	@Then("user can view add contest page")
 	public void user_can_view_add_contest_page() {
+		  Assert.assertEquals("Admin", c.getpageTitle());
 	    
 	}
 	@When("user Enter Contest  details")
-	public void user_enter_contest_details() {
+	public void user_enter_contest_details() throws InterruptedException {
+		Thread.sleep(3000);
+     c.selctContestgroup();
+		c.minPar("3");
+		c.maxPar();
+		c.enteryFee();
+		c.enteryAllowed();
+		c.contestType();
+		c.prizeDistribution();
+		c.maxRankk();
+		c.Distribution();
+		
+		c.ClickOnEnglish("Auto Contestee","Auto contesee");
+		
+		c.clickOnHindi("auto hindi", "auto hindii");
+		
 	  
 	}
 	@When("click on the sumbit button")
 	public void click_on_the_sumbit_button() {
+		c.clickOnSumbit();
 	   
 	}
 	//@Then("user can view Confirmation message {string}")

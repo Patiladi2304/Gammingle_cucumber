@@ -18,7 +18,7 @@ public WebDriver ldriver;
 	
 	 
 //click on video 	
-	@FindBy(xpath ="//*[@id=\"main-menu-navigation\"]/li[3]/ul/li[2]/a")
+	@FindBy(xpath ="//span[.='Videos']")
 	WebElement clickonVideo;
 	//Click on add video 
 	@FindBy(xpath = "//a[.=' Add Video']")

@@ -9,7 +9,8 @@ import io.opentelemetry.sdk.metrics.internal.exemplar.TraceBasedExemplarFilter;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = ".//Features/contest.feature",
+		//features = ".//Features/Login.feature",
+		features = ".//Features/ContestGroup.feature",
 		glue = "StepDefination",
 		dryRun = false,  //check every scenario & method is created or not
 		monochrome = true,   //console readble
