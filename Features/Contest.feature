@@ -5,7 +5,7 @@ Feature: Contest
     When user open URL "http://skyonliners.com/demo/gammingle-web/webadmin"
     And user enter Email as "admin@admin.com" and Password as "Admin@2017"
     And click on login button
-    Then user can view Dashboard
+    Then user can view Dashboard 
     When click on the DFS
     And click on the Contest
     And Click on the Add contest
