@@ -1,5 +1,6 @@
 package PageObject;
 
+import org.apache.commons.lang.RandomStringUtils;
 import org.checkerframework.checker.nullness.qual.AssertNonNullIfNonNull;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -53,7 +54,7 @@ public class addStaff {
 		}
 	
 	public void clickOnManageStaff() {
-		//method js
+		//method js										
 		managestaff.click();
 	}
 	public void clickOnAddStaff() {
@@ -65,19 +66,24 @@ public class addStaff {
 		s.selectByVisibleText("Data");
 	}
 	
-	public void firstName(String name) {
-		fname.sendKeys(name);
+	public void firstName() {
+		String firstname =RandomStringUtils.randomAlphanumeric(7).toLowerCase();
+		
+		fname.sendKeys(firstname);
 	}
 	
-	public void lastName(String name) {
-		lname.sendKeys(name);
+	public void lastName() {
+		String lastname=RandomStringUtils.randomAlphabetic(3).toLowerCase();
+		lname.sendKeys(lastname);
 	}
-	public void EnterEmailId(String email) {
+	public void EnterEmailId() {
+		//Random keyword: 
+		String  email = RandomStringUtils.randomAlphabetic(10).toLowerCase()+"@gmail.com";
 		enteremail.sendKeys(email);
 	}
-	public void phone(String number) {
-		phone.sendKeys(number);
-		
+	public void phone() {
+		String number =RandomStringUtils.randomNumeric(10);
+		phone.sendKeys(number);	
 	}
 	
 	public void enterpwd(String pwd) {

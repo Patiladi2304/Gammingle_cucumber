@@ -300,12 +300,19 @@ public class Loginsteps extends BaseClass {
 	@Then("user fill all the details")
 	public void user_fill_all_the_details() {
 		staff.selectRole();
-		staff.firstName("autoo");
-		staff.lastName("lname");
-		staff.EnterEmailId("test@gmail.comm");
-		staff.phone("9090909090");
+		staff.firstName();
+		staff.lastName();
+		staff.EnterEmailId();
+		staff.phone();
 		staff.enterpwd("Test@123");
 	}
+	
+//	Pending 
+//	@Then("user can view confirmation message {string}")
+//	public void user_can_view_confirmation_message(String string) {
+//	    driver.findElement(By.xpath(""))
+//	}
+//	
 
 	@Then("click on the Sumbit button")
 	public void click_on_the_sumbit_button1() {
