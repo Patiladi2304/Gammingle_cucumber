@@ -1,6 +1,6 @@
 package StepDefination;
 
-import static org.junit.Assert.assertArrayEquals;
+
 
 import java.time.Duration;
 
@@ -15,6 +15,7 @@ import PageObject.ContestGroup;
 import PageObject.Login;
 import PageObject.MarketingCategory;
 import PageObject.addStaff;
+import PageObject.configProperties;
 import PageObject.searchContest;
 import PageObject.video;
 import io.cucumber.java.en.*;
@@ -32,8 +33,12 @@ public class Loginsteps extends BaseClass {
 
 	@When("user open URL {string}")
 	public void user_open_url(String url) {
-		driver.navigate().to(url);
+		driver.navigate().to("http://skyonliners.com/demo/gammingle-web/webadmin");
 	}
+//	@When("user open LoginURL")
+//	public void user_open_login_url() {
+//	   driver.navigate().to(configProperties.property.getProperty("LoginURL"));
+//	}
 
 	@When("user enter Email as {string} and Password as {string}")
 	public void user_enter_email_as_and_password_as(String email, String password) {
@@ -68,13 +73,18 @@ public class Loginsteps extends BaseClass {
 	public void click_on_user_logout_link() throws InterruptedException {
 		Thread.sleep(3000);
 		loginlp.clcikOnlogutButton();
+		String logouturl = driver.getCurrentUrl();
+		if (logouturl.contains("http://skyonliners.com/demo/gammingle-web/webadmin")) {
+			System.out.println("url match");
+		} 
+		Thread.sleep(2000);
 
 	}
 
 	@Then("close the browser")
 	public void close_the_browser() {
-		driver.close();
-		// driver.quit();
+		//driver.close();
+		 driver.quit();
 	}
 
 //marketing Category	
@@ -342,6 +352,14 @@ public class Loginsteps extends BaseClass {
 		boolean status = sc.searchContest("Live Final");
 		Assert.assertEquals(true, status);
 		System.out.println("data ");
+	}
+		
+		@Then("user can view confirmation message {string}")
+		public void user_can_view_confirmation_message(String string) {
+		//pending
+	// in add staff scenario ask janvi mam  regarding scroll to method 
+		
+
 
 	}
 

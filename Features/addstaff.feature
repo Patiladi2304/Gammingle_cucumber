@@ -1,7 +1,7 @@
 Feature: manage staff
 Scenario: Add new staff
     Given user launch chrome browser
-    When user open URL "http://skyonliners.com/demo/gammingle-web/webadmin"
+    When user open LoginURL
     And user enter Email as "admin@admin.com" and Password as "Admin@2017"
     And click on login button
     Then user can view Dashboard 

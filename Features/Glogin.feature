@@ -1,9 +1,9 @@
-Feature: Login with valid credentails
+Feature: Login with valid 	
 
   Scenario: Title of your scenario
     Given user launch chrome browser
     When user open URL "http://skyonliners.com/demo/gammingle-web/webadmin"
-    And user enter Email as "admin@admin.com" and Password as "Admin@2017"
+    And user enter Email as "admin@admin.com" and Password as "Admin@1122"
     And click on login button
     Then page title should be "Admin"
     When click on user Logout link
